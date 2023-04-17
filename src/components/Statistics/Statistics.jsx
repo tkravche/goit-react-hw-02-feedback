@@ -1,3 +1,4 @@
+import { FaRegThumbsUp, FaRegThumbsDown, FaRegMeh } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 export const Statistics = ({
@@ -9,10 +10,17 @@ export const Statistics = ({
 }) => {
   return (
     <>
-   
-      <p> Good: {good}</p>
-      <p> Neutral: {neutral}</p>
-      <p> Bad: {bad}</p>
+      <p>
+        <FaRegThumbsUp /> Good: {good}
+      </p>
+      <p>
+        {' '}
+        <FaRegMeh /> Neutral: {neutral}
+      </p>
+      <p>
+        {' '}
+        <FaRegThumbsDown /> Bad: {bad}
+      </p>
       <p> Total: {total()}</p>
       <p> Positive feedback: {positivePercentage()}%</p>
     </>
@@ -20,9 +28,9 @@ export const Statistics = ({
 };
 
 Statistics.propTypes = {
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-    total: PropTypes.func.isRequired,
-    positivePercentage: PropTypes.func.isRequired,
-  };
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.func.isRequired,
+  positivePercentage: PropTypes.func.isRequired,
+};
