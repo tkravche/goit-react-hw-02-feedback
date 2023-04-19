@@ -17,15 +17,19 @@ export class App extends Component {
       return { [name]: prevState[name] + 1 };
     });
   };
-  
-  countTotalFeedback = e => {
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
+
+  countTotalFeedback = () => {
+    return Object.values(this.state).reduce(
+      (acc, feedback) => (acc += feedback),
+      0
+    );
   };
 
-  countPositiveFeedbackPercentage = e => {
-    const { good, neutral, bad } = this.state;
-    return Math.round((good / (good + neutral + bad)) * 100);
+  countPositiveFeedbackPercentage = () => {
+    if (this.countTotalFeedback()) {
+      return Math.round((this.state.good / this.countTotalFeedback()) * 100);
+    }
+    return 0;
   };
 
   render() {
